@@ -52,7 +52,8 @@
 			isa = PBXGroup;
 			children = (
 				C105C646282A99F0002E8179 /* TheOfficeWikiAppApp.swift */,
-				C105C648282A99F0002E8179 /* ContentView.swift */,
+				C105C654282B2508002E8179 /* Model */,
+				C105C655282B2525002E8179 /* Views */,
 				C105C64A282A99F9002E8179 /* Assets.xcassets */,
 				C105C64C282A99F9002E8179 /* Preview Content */,
 			);
@@ -65,6 +66,29 @@
 				C105C64D282A99F9002E8179 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C105C654282B2508002E8179 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C105C648282A99F0002E8179 /* ContentView.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C105C655282B2525002E8179 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C105C656282B273A002E8179 /* Helpers */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C105C656282B273A002E8179 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
