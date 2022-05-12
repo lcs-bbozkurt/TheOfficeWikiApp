@@ -14,6 +14,8 @@
 		C119E089282C0E830005E13C /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119E088282C0E820005E13C /* Episode.swift */; };
 		C124A830282C1B4300E2E733 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124A82F282C1B4300E2E733 /* SearchView.swift */; };
 		C124A832282C1B6200E2E733 /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124A831282C1B6200E2E733 /* FavouritesView.swift */; };
+		C124A834282C7E3000E2E733 /* EpisodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124A833282C7E3000E2E733 /* EpisodeDetailView.swift */; };
+		C124A836282CA62300E2E733 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124A835282CA62300E2E733 /* ListItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		C119E088282C0E820005E13C /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		C124A82F282C1B4300E2E733 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		C124A831282C1B6200E2E733 /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
+		C124A833282C7E3000E2E733 /* EpisodeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailView.swift; sourceTree = "<group>"; };
+		C124A835282CA62300E2E733 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,7 @@
 			children = (
 				C124A82F282C1B4300E2E733 /* SearchView.swift */,
 				C124A831282C1B6200E2E733 /* FavouritesView.swift */,
+				C124A833282C7E3000E2E733 /* EpisodeDetailView.swift */,
 				C105C656282B273A002E8179 /* Helpers */,
 			);
 			path = Views;
@@ -96,6 +101,7 @@
 		C105C656282B273A002E8179 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C124A835282CA62300E2E733 /* ListItemView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -171,8 +177,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C124A830282C1B4300E2E733 /* SearchView.swift in Sources */,
+				C124A836282CA62300E2E733 /* ListItemView.swift in Sources */,
 				C119E089282C0E830005E13C /* Episode.swift in Sources */,
 				C119E087282C0E740005E13C /* SearchResult.swift in Sources */,
+				C124A834282C7E3000E2E733 /* EpisodeDetailView.swift in Sources */,
 				C124A832282C1B6200E2E733 /* FavouritesView.swift in Sources */,
 				C105C647282A99F0002E8179 /* TheOfficeWikiAppApp.swift in Sources */,
 			);
