@@ -8,13 +8,47 @@
 import SwiftUI
 
 struct EpisodeDetailView: View {
+    
+    // MARK: Stored properties
+    
+    // Song to show in this view
+    var episode: Episode
+    
+    // Whether this song is in the Favourites list or not
+    @State var inFavourites: Bool
+    
+    // A reference to the list of favourite songs
+    // This is a derived value; source of truth is at the app level
+    @Binding var favourites: [Episode]
+    
+    // MARK: Computed properties
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(alignment: .leading) {
+                
+                VStack(alignment: .leading) {
+                    
+                    Text(episode.title)
+                        .font(.title)
+                    
+                    Text(episode.description)
+                        .font(.subheadline)
+                    
+                }
+                    Spacer()
+                .frame(maxWidth: .infinity)
+        }
+        .padding()
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct EpisodeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        EpisodeDetailView()
+        NavigationView {
+        EpisodeDetailView(episode: testEpisode,
+                          inFavourites: false,
+                          favourites: .constant([]))
+        }
     }
 }
