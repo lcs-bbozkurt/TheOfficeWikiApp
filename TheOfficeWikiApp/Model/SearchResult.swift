@@ -21,6 +21,6 @@ import Foundation
 
 struct SearchResult: Decodable {
     
-    let results: [Episode]
+    let data: [Episode]
     
 }

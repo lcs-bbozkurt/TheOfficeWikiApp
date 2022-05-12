@@ -25,61 +25,43 @@ struct SearchView: View {
     var body: some View {
         ZStack {
             
-            VStack {
-                
-                // Search text was given, results obtained
-                // Show the list of results
-                // to uniquely identify each episode
-                List(foundEpisodes, id: \.id) { currentEpisode in
-                    
-                    NavigationLink(destination: EpisodeDetailView(episode: currentEpisode, inFavourites: false, favourites: $favourites)) {
-                        ListItemView(episode: currentEpisode)
-                    }
-                }
-                
-                .searchable(text: $searchText)
-                .onChange(of: searchText) { whatWasTyped in
-                    
-                    // When what is typed in the search field changes,
-                    // get new results from the endpoint
-                    Task {
-                        await fetchResults()
-                    }
-                }
-            }
-            
-            .navigationTitle("Episode Browser")
-            
-            VStack {
-                Spacer()
-                
-                Text("Enter an episode name")
-                    .font(.title)
-                    .foregroundColor(.secondary)
-                
-                Spacer()
-            }
-            .opacity(searchText.isEmpty ? 1.0 : 0.0)
-            
+             VStack {
+                 
+                 TextField("Enter an episode name", text: $searchText)
+                     .font(.title)
+                     .foregroundColor(.secondary)
+                 // Search text was given, results obtained
+                 // Show the list of results
+                 // to uniquely identify each episode
+                 List(searchResults, id: \.id) { currentEpisode in
+                     
+                     NavigationLink(destination: EpisodeDetailView(episode: currentEpisode, inFavourites: false, favourites: $favourites)) {
+                         ListItemView(episode: currentEpisode)
+                     }
+                 }
+                 .searchable(text: $searchText)
+             }
+             .navigationTitle("Episode Browser")
+        }
+        .task {
+            await fetchResults()
+        }
+    }
+    
+    var searchResults: [Episode] {
+        if searchText.isEmpty {
+            return foundEpisodes
+        } else {
+            return foundEpisodes.filter { $0.title.contains(searchText) }
         }
     }
     
     // MARK: Functions
     func fetchResults() async {
         
-        // Sanitize the search input
-        let input = searchText.lowercased().replacingOccurrences(of: " ", with: "+")
-        
         // Set the address of the JSON endpoint
         
-        let url = URL(string: "https://www.officeapi.dev/api/episodes/\(input)&entity=episode")!
-        
-        // Configure a URLRequest instance
-        // Defines what type of request will be sent to the address noted above
-        var request = URLRequest(url: url)
-        request.setValue("application/json",
-                         forHTTPHeaderField: "Accept")
-        request.httpMethod = "GET"
+        let url = URL(string: "https://www.officeapi.dev/api/episodes/")!
         
         // Start a URL session to interact with the endpoint
         let urlSession = URLSession.shared
@@ -87,20 +69,17 @@ struct SearchView: View {
         // Fetch the results of this search
         do {
             // Get the raw data from the endpoint
-            let (data, _) = try await urlSession.data(for: request)
+            let (data, _) = try await urlSession.data(from: url)
             
             // DEBUG: See what raw JSON data was returned from the server
             print(String(data: data, encoding: .utf8)!)
             
             // Attempt to decode and return the object containing
             // the search result
-            // NOTE: We decode to SearchResult.self since the endpoint
-            //       returns a single JSON object
             let decodedSearchResult = try JSONDecoder().decode(SearchResult.self, from: data)
             
-            // Now, we access the list of songs that are part of the decoded result
             // This is assigned to the array that will display the episodes in the user interface
-            foundEpisodes = decodedSearchResult.results
+            foundEpisodes = decodedSearchResult.data
             
         } catch {
             
