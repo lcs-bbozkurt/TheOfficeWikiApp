@@ -33,7 +33,7 @@ struct SearchView: View {
                     // to uniquely identify each song
                     List(foundEpisodes, id: \.trackId) { currentEpisode in
                         
-                        NavigationLink(destination: EpisodeDetailView(song: currentEpisode, inFavourites: false, favourites: $favourites)) {
+                        NavigationLink(destination: EpisodeDetailView(episode: currentEpisode, inFavourites: false, favourites: $favourites)) {
                             ListItemView(song: currentEpisode)
                         }
                         
@@ -74,7 +74,7 @@ struct SearchView: View {
         
         // Set the address of the JSON endpoint
         
-        let url = URL(string: "https://itunes.apple.com/search?term=\(input)&entity=song")!
+        let url = URL(string: "https://www.officeapi.dev/api/episodes/\(input)&entity=episode")!
         
         // Configure a URLRequest instance
         // Defines what type of request will be sent to the address noted above
@@ -102,7 +102,7 @@ struct SearchView: View {
             
             // Now, we access the list of songs that are part of the decoded result
             // This is assigned to the array that will display the songs in the user interface
-            fo = decodedSearchResult.results
+            foundEpisodes = decodedSearchResult.results
             
         } catch {
             

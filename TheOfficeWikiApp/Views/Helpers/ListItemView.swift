@@ -8,13 +8,29 @@
 import SwiftUI
 
 struct ListItemView: View {
+    
+    // MARK: Stored properties
+    var episode: Episode
+    
+    // MARK: Computed properties
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack(alignment: .leading) {
+            Text(episode.title)
+            
+            Text(episode.description)
+                .font(.caption)
+        }
+        
+        
+        
+
     }
 }
 
 struct ListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ListItemView()
+        ListItemView(episode: testEpisode)
     }
 }
