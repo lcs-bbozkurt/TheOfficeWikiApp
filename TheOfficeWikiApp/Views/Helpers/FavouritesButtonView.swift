@@ -58,7 +58,7 @@ struct FavouritesButtonView: View {
             // This iterates over the entire "favourites" list, looking
             // for a match to the current episode...
             favourites.removeAll(where: { currentEpisodeInList in
-                currentEpisodeInList.id == episode.id
+                currentEpisodeInList._id == episode._id
             })
             inFavourites = false
         }

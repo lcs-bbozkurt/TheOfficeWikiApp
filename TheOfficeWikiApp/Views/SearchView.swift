@@ -33,7 +33,7 @@ struct SearchView: View {
                  // Search text was given, results obtained
                  // Show the list of results
                  // to uniquely identify each episode
-                 List(searchResults, id: \.id) { currentEpisode in
+                 List(searchResults, id: \._id) { currentEpisode in
                      
                      NavigationLink(destination: EpisodeDetailView(episode: currentEpisode, inFavourites: false, favourites: $favourites)) {
                          ListItemView(episode: currentEpisode)
