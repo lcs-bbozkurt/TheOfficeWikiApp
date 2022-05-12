@@ -19,18 +19,58 @@ struct FavouritesButtonView: View {
     
     // The list of favourite songs
     @Binding var favourites: [Episode]
-        
+    
     // MARK: Computed properties
-        
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        // Favourites button (heart)
+        Button(action: {
+            
+            addOrRemoveEpisodeFromFavourites()
+            
+        }) {
+            
+            HStack {
+                Text(inFavourites ? "Remove from\nFavourites" : "Add to\nFavourites")
+                    .multilineTextAlignment(.center)
+                
+                Image(systemName: inFavourites ? "suit.heart.fill" : "suit.heart")
+                    .resizable()
+                    .frame(width: 40, height: 40)
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(Color("deepRed"))
+            }
+        }
+    }
+    
+    
+    func addOrRemoveEpisodeFromFavourites() {
+        
+        // Is this song in the favourites list?
+        if inFavourites == false {
+            
+            // OK then, add it to the list
+            favourites.append(episode)
+            inFavourites = true
+            
+        } else {
+            
+            // This iterates over the entire "favourites" list, looking
+            // for a match to the current episode...
+            favourites.removeAll(where: { currentEpisodeInList in
+                currentEpisodeInList.id == episode.id
+            })
+            inFavourites = false
+        }
+
+        
     }
 }
 
 struct FavouritesButtonView_Previews: PreviewProvider {
     static var previews: some View {
         FavouritesButtonView(episode: testEpisode,
-                              inFavourites: .constant(true),
-                              favourites: .constant([]))
+                             inFavourites: .constant(true),
+                             favourites: .constant([]))
     }
 }
