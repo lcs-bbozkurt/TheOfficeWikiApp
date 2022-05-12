@@ -16,6 +16,7 @@
 		C124A832282C1B6200E2E733 /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124A831282C1B6200E2E733 /* FavouritesView.swift */; };
 		C124A834282C7E3000E2E733 /* EpisodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124A833282C7E3000E2E733 /* EpisodeDetailView.swift */; };
 		C124A836282CA62300E2E733 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124A835282CA62300E2E733 /* ListItemView.swift */; };
+		C124A838282D604200E2E733 /* FavouritesButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124A837282D604200E2E733 /* FavouritesButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		C124A831282C1B6200E2E733 /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		C124A833282C7E3000E2E733 /* EpisodeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailView.swift; sourceTree = "<group>"; };
 		C124A835282CA62300E2E733 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
+		C124A837282D604200E2E733 /* FavouritesButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				C124A835282CA62300E2E733 /* ListItemView.swift */,
+				C124A837282D604200E2E733 /* FavouritesButtonView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				C124A836282CA62300E2E733 /* ListItemView.swift in Sources */,
 				C119E089282C0E830005E13C /* Episode.swift in Sources */,
 				C119E087282C0E740005E13C /* SearchResult.swift in Sources */,
+				C124A838282D604200E2E733 /* FavouritesButtonView.swift in Sources */,
 				C124A834282C7E3000E2E733 /* EpisodeDetailView.swift in Sources */,
 				C124A832282C1B6200E2E733 /* FavouritesView.swift in Sources */,
 				C105C647282A99F0002E8179 /* TheOfficeWikiAppApp.swift in Sources */,
