@@ -37,7 +37,7 @@ struct FavouritesView: View {
                     List(favourites, id: \.id) { currentEpisode in
                         
                         NavigationLink(destination: EpisodeDetailView(episode: currentEpisode, inFavourites: true, favourites: $favourites)) {
-                            ListItemView(Episode: currentEpisode)
+                            ListItemView(episode: currentEpisode)
                         }
                         
                     }

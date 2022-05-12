@@ -23,49 +23,47 @@ struct SearchView: View {
     // MARK: Computed Properties
     
     var body: some View {
-            ZStack {
+        ZStack {
+            
+            VStack {
                 
-                VStack {
+                // Search text was given, results obtained
+                // Show the list of results
+                // to uniquely identify each episode
+                List(foundEpisodes, id: \.id) { currentEpisode in
                     
-                    // Search text was given, results obtained
-                    // Show the list of results
-                    // Keypath of \.trackId tells the List view what property to use
-                    // to uniquely identify each song
-                    List(foundEpisodes, id: \.trackId) { currentEpisode in
-                        
-                        NavigationLink(destination: EpisodeDetailView(episode: currentEpisode, inFavourites: false, favourites: $favourites)) {
-                            ListItemView(song: currentEpisode)
-                        }
-                        
+                    NavigationLink(destination: EpisodeDetailView(episode: currentEpisode, inFavourites: false, favourites: $favourites)) {
+                        ListItemView(episode: currentEpisode)
                     }
-                    .searchable(text: $searchText)
-                    .onChange(of: searchText) { whatWasTyped in
-                        
-                        // When what is typed in the search field changes,
-                        // get new results from the endpoint
-                        Task {
-                            await fetchResults()
-                        }
-
+                }
+                
+                .searchable(text: $searchText)
+                .onChange(of: searchText) { whatWasTyped in
+                    
+                    // When what is typed in the search field changes,
+                    // get new results from the endpoint
+                    Task {
+                        await fetchResults()
                     }
-
-                    
                 }
-                .navigationTitle("Episode Browser")
+            }
+            
+            .navigationTitle("Episode Browser")
+            
+            VStack {
+                Spacer()
                 
-                VStack {
-                    Spacer()
-                    
-                    Text("Enter an episode name")
-                        .font(.title)
-                        .foregroundColor(.secondary)
-                    
-                    Spacer()
-                }
-                .opacity(searchText.isEmpty ? 1.0 : 0.0)
+                Text("Enter an episode name")
+                    .font(.title)
+                    .foregroundColor(.secondary)
                 
+                Spacer()
+            }
+            .opacity(searchText.isEmpty ? 1.0 : 0.0)
+            
         }
     }
+    
     // MARK: Functions
     func fetchResults() async {
         
@@ -101,7 +99,7 @@ struct SearchView: View {
             let decodedSearchResult = try JSONDecoder().decode(SearchResult.self, from: data)
             
             // Now, we access the list of songs that are part of the decoded result
-            // This is assigned to the array that will display the songs in the user interface
+            // This is assigned to the array that will display the episodes in the user interface
             foundEpisodes = decodedSearchResult.results
             
         } catch {
@@ -111,10 +109,7 @@ struct SearchView: View {
             print(error)
             
         }
-        
     }
-    
-    
 }
 
 struct SearchView_Previews: PreviewProvider {
