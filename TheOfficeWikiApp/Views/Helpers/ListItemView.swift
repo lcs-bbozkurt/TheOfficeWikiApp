@@ -21,6 +21,9 @@ struct ListItemView: View {
             
             Text(episode.description)
                 .font(.caption)
+            
+            Text(episode.airDate)
+                .font(.caption)
         }
     }
 }
