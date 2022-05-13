@@ -23,29 +23,31 @@ struct SearchView: View {
     // MARK: Computed Properties
     
     var body: some View {
-        ZStack {
-            
-            VStack {
+        
+        NavigationView {
+            ZStack {
                 
-                TextField("Enter an episode name", text: $searchText)
-                    .font(.title)
-                    .foregroundColor(.secondary)
-                // Search text was given, results obtained
-                // Show the list of results
-                // to uniquely identify each episode
-                List(searchResults, id: \._id) { currentEpisode in
-                    
-                    NavigationLink(destination: EpisodeDetailView(episode: currentEpisode , favourites: $favourites)) {
-                        ListItemView(episode: currentEpisode)
+                VStack {
+
+                    // Search text was given, results obtained
+                    // Show the list of results
+                    // to uniquely identify each episode
+                    List(searchResults, id: \._id) { currentEpisode in
+                        
+                        NavigationLink(destination: EpisodeDetailView(episode: currentEpisode , favourites: $favourites)) {
+                            ListItemView(episode: currentEpisode)
+                        }
                     }
+                    .searchable(text: $searchText)
                 }
-                .searchable(text: $searchText)
+                .navigationTitle("Episode Browser")
             }
-            .navigationTitle("Episode Browser")
+            .task {
+                await fetchResults()
+            }
+
         }
-        .task {
-            await fetchResults()
-        }
+        
     }
     
     var searchResults: [Episode] {

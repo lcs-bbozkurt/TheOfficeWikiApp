@@ -41,9 +41,7 @@ struct FavouritesButtonView: View {
                     .foregroundColor(Color("deepRed"))
             }
         }
-        task {
-            await FavouritesButtonView(episode: [episode], inFavourites: false, favourites: [favourites])
-        }
+        
     }
     
     
