@@ -12,7 +12,7 @@ struct EpisodeDetailView: View {
     // MARK: Stored properties
     
     @State var inFavourites: Bool
-
+    
     var episode: Episode
     
     @Binding var favourites: [Episode]

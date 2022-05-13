@@ -27,11 +27,11 @@ struct SearchView: View {
         NavigationView {
             
             
-
+            
             ZStack {
-     
+                
                 VStack {
-
+                    
                     // Search text was given, results obtained
                     // Show the list of results
                     // to uniquely identify each episode
@@ -48,7 +48,7 @@ struct SearchView: View {
             .task {
                 await fetchResults()
             }
-
+            
         }
         
     }
