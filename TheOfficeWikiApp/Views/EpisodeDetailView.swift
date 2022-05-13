@@ -11,6 +11,7 @@ struct EpisodeDetailView: View {
     
     // MARK: Stored properties
     
+    @State var inFavourites: Bool
 
     var episode: Episode
     
@@ -54,7 +55,7 @@ struct EpisodeDetailView: View {
 struct EpisodeDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            EpisodeDetailView(episode: testEpisode,
+            EpisodeDetailView(inFavourites: false, episode: testEpisode,
                               favourites: .constant([]))
         }
     }

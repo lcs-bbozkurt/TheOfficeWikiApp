@@ -37,7 +37,7 @@ struct SearchView: View {
                     // to uniquely identify each episode
                     List(searchResults, id: \._id) { currentEpisode in
                         
-                        NavigationLink(destination: EpisodeDetailView(episode: currentEpisode, favourites: $favourites)) {
+                        NavigationLink(destination: EpisodeDetailView(inFavourites: true, episode: currentEpisode, favourites: $favourites)) {
                             ListItemView(episode: currentEpisode)
                         }
                     }
