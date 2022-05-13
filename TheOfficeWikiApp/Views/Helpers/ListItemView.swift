@@ -22,10 +22,6 @@ struct ListItemView: View {
             Text(episode.description)
                 .font(.caption)
         }
-        
-        
-        
-
     }
 }
 

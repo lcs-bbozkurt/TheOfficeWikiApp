@@ -11,18 +11,17 @@ struct FavouritesView: View {
     
     // MARK: Stored properties
     
-    // Derived value; a reference to the list of favourite songs
     @Binding var favourites: [Episode]
     
     // MARK: Computed properties
-
+    
     var body: some View {
         NavigationView {
             
             VStack {
                 // Show message if no favourites noted
                 if favourites.isEmpty {
-
+                    
                     Spacer()
                     
                     Text("No favourite episodes yet")
@@ -30,20 +29,20 @@ struct FavouritesView: View {
                         .foregroundColor(.secondary)
                     
                     Spacer()
-
+                    
                 } else {
-
+                    
                     // Show list of favourite songs
                     List(favourites, id: \._id) { currentEpisode in
                         
-                        NavigationLink(destination: EpisodeDetailView(episode: currentEpisode, inFavourites: true, favourites: $favourites)) {
+                        NavigationLink(destination: EpisodeDetailView(episode: currentEpisode, favourites: $favourites)) {
                             ListItemView(episode: currentEpisode)
                         }
                         
                     }
                     
                 }
-  
+                
             }
             .navigationTitle("Favourites")
         }

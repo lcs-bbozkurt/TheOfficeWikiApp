@@ -36,10 +36,13 @@ struct FavouritesButtonView: View {
                 
                 Image(systemName: inFavourites ? "suit.heart.fill" : "suit.heart")
                     .resizable()
-                    .frame(width: 40, height: 40)
+                    .frame(width: 50, height: 50)
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(Color("deepRed"))
             }
+        }
+        task {
+            await FavouritesButtonView(episode: [episode], inFavourites: false, favourites: [favourites])
         }
     }
     
@@ -62,7 +65,7 @@ struct FavouritesButtonView: View {
             })
             inFavourites = false
         }
-
+        
         
     }
 }

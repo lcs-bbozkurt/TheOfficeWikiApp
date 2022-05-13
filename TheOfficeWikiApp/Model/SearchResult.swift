@@ -13,9 +13,7 @@
 // https://jsonformatter.curiousconcept.com/#
 
 
-
-
-
+// This page is for the list only.
 
 import Foundation
 

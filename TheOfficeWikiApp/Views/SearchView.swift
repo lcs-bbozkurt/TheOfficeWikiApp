@@ -25,23 +25,23 @@ struct SearchView: View {
     var body: some View {
         ZStack {
             
-             VStack {
-                 
-                 TextField("Enter an episode name", text: $searchText)
-                     .font(.title)
-                     .foregroundColor(.secondary)
-                 // Search text was given, results obtained
-                 // Show the list of results
-                 // to uniquely identify each episode
-                 List(searchResults, id: \._id) { currentEpisode in
-                     
-                     NavigationLink(destination: EpisodeDetailView(episode: currentEpisode, inFavourites: false, favourites: $favourites)) {
-                         ListItemView(episode: currentEpisode)
-                     }
-                 }
-                 .searchable(text: $searchText)
-             }
-             .navigationTitle("Episode Browser")
+            VStack {
+                
+                TextField("Enter an episode name", text: $searchText)
+                    .font(.title)
+                    .foregroundColor(.secondary)
+                // Search text was given, results obtained
+                // Show the list of results
+                // to uniquely identify each episode
+                List(searchResults, id: \._id) { currentEpisode in
+                    
+                    NavigationLink(destination: EpisodeDetailView(episode: currentEpisode , favourites: $favourites)) {
+                        ListItemView(episode: currentEpisode)
+                    }
+                }
+                .searchable(text: $searchText)
+            }
+            .navigationTitle("Episode Browser")
         }
         .task {
             await fetchResults()
@@ -52,6 +52,8 @@ struct SearchView: View {
         if searchText.isEmpty {
             return foundEpisodes
         } else {
+            
+            // $0 is a shortcut to mean "first argument" in a closure.
             return foundEpisodes.filter { $0.title.contains(searchText) }
         }
     }
