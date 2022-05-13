@@ -11,6 +11,7 @@ struct EpisodeDetailView: View {
     
     // MARK: Stored properties
     
+
     var episode: Episode
     
     @Binding var favourites: [Episode]
@@ -34,7 +35,14 @@ struct EpisodeDetailView: View {
                     .italic()
                 
                 Text(episode.airDate)
-                    .font(.body)     
+                    .font(.body)
+                
+                Button(action: {
+                    favourites.append(episode)
+                }) {
+                    Text("Add to Favourites")
+                }
+                .padding(.vertical)
             }
             Spacer()
         }

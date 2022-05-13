@@ -35,7 +35,7 @@ struct FavouritesView: View {
                     // Show list of favourite songs
                     List(favourites, id: \._id) { currentEpisode in
                         
-                        NavigationLink(destination: EpisodeDetailView(episode: currentEpisode, favourites: $favourites)) {
+                        NavigationLink(destination: EpisodeDetailView(episode: currentEpisode,favourites: $favourites)) {
                             ListItemView(episode: currentEpisode)
                         }
                         

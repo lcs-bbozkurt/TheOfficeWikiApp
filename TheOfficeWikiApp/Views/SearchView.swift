@@ -25,8 +25,11 @@ struct SearchView: View {
     var body: some View {
         
         NavigationView {
+            
+            
+
             ZStack {
-                
+     
                 VStack {
 
                     // Search text was given, results obtained
@@ -34,7 +37,7 @@ struct SearchView: View {
                     // to uniquely identify each episode
                     List(searchResults, id: \._id) { currentEpisode in
                         
-                        NavigationLink(destination: EpisodeDetailView(episode: currentEpisode , favourites: $favourites)) {
+                        NavigationLink(destination: EpisodeDetailView(episode: currentEpisode, favourites: $favourites)) {
                             ListItemView(episode: currentEpisode)
                         }
                     }
